@@ -1,0 +1,15 @@
+Package: serverhub-agent
+Version: 1.0.2
+Architecture: all
+Essential: no
+Maintainer: 7stock.app
+Depends: python3 (>= 3.8.0), python3-pip, systemd
+Filename: pool/serverhub-agent.deb
+Size: 4266
+MD5sum: dad15452c40d2368030055f0b35de128
+SHA1: fc9c603e708443f17cda1eff110b4d35d84710b9
+SHA256: 3d7b0dd30cef71f3726cb81fa7078373328ee30e3ee927268782c2a115240aae
+Section: utils
+Priority: optional
+Description: ServerHub monitoring agent
+
