@@ -29,7 +29,7 @@ This is the recommended method as it ensures the package stays up-to-date.
 The GPG key ensures the authenticity of the ServerHub repository. Run the following command:
 
 ```bash
-curl -fsSL https://serverhub-apt.7stock.app/KEY.asc | sudo gpg --dearmor -o /usr/share/keyrings/serverhub-archive-keyring.gpg
+curl -fsSL https://raw.githubusercontent.com/7Stockapp/serverhub_dev/main/KEY.asc | sudo gpg --dearmor -o /usr/share/keyrings/serverhub-archive-keyring.gpg
 ```
 
 #### 2️⃣ Step 2: Verify the GPG Key Fingerprint
@@ -45,7 +45,7 @@ gpg --no-default-keyring --keyring /usr/share/keyrings/serverhub-archive-keyring
 Add the ServerHub repository to your system's package sources:
 
 ```bash
-echo "deb [signed-by=/usr/share/keyrings/serverhub-archive-keyring.gpg arch=amd64] https://serverhub-apt.7stock.app/ stable main" | sudo tee /etc/apt/sources.list.d/serverhub.list
+echo "deb [signed-by=/usr/share/keyrings/serverhub-archive-keyring.gpg arch=amd64] https://raw.githubusercontent.com/7Stockapp/serverhub_dev/main/ stable main" | sudo tee /etc/apt/sources.list.d/serverhub.list
 ```
 
 #### 4️⃣ Step 4: Update and Install
@@ -67,7 +67,7 @@ Use this method if you prefer to manually download and install the package.
 Download the latest `.deb` package using `wget`:
 
 ```bash
-wget https://serverhub-apt.7stock.app/pool/serverhub-agent.deb
+wget https://raw.githubusercontent.com/7Stockapp/serverhub_dev/main/pool/serverhub-agent.deb
 ```
 
 #### 2️⃣ Step 2: Install the Package
@@ -100,7 +100,7 @@ If you encounter any issues during the installation:
 
 - 🔍 Ensure your internet connection is stable.
 - 🔑 Verify you have the required `sudo` permissions.
-- 🛠️ Open an issue in the [GitHub Issues](https://github.com/7Stockapp/serverhub/issues) section for further assistance.
+- 🛠️ Open an issue in the [GitHub Issues](https://github.com/7Stockapp/serverhub_dev/issues) section for further assistance.
 
 ---
 
