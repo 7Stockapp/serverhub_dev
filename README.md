@@ -20,9 +20,9 @@ You can install the **ServerHub Agent** using either of the two methods below:
 
 ---
 
-### Method 1: Install via Repository
+### Method 1: Install via Repository (Advanced)
 
-This method adds the ServerHub repository to your system.
+This method adds the ServerHub repository to your system but may require additional flags to bypass security checks.
 
 #### 1️⃣ Step 1: Download and Add the GPG Key
 
@@ -45,7 +45,7 @@ gpg --no-default-keyring --keyring /usr/share/keyrings/serverhub-archive-keyring
 Add the ServerHub repository to your system's package sources:
 
 ```bash
-echo "deb [signed-by=/usr/share/keyrings/serverhub-archive-keyring.gpg arch=amd64] https://raw.githubusercontent.com/7Stockapp/serverhub_dev/main/ stable main" | sudo tee /etc/apt/sources.list.d/serverhub.list
+echo "deb [signed-by=/usr/share/keyrings/serverhub-archive-keyring.gpg arch=amd64 trusted=yes] https://raw.githubusercontent.com/7Stockapp/serverhub_dev/main/ stable main" | sudo tee /etc/apt/sources.list.d/serverhub.list
 ```
 
 #### 4️⃣ Step 4: Update and Install
@@ -53,20 +53,17 @@ echo "deb [signed-by=/usr/share/keyrings/serverhub-archive-keyring.gpg arch=amd6
 Update your package list and install the **ServerHub Agent**:
 
 ```bash
-# First try without special flags
-sudo apt update && sudo apt install -y serverhub-agent
-
-# If you get security warnings, use these flags
+# Using security bypass flags (required)
 sudo apt update --allow-insecure-repositories && sudo apt install -y serverhub-agent --allow-unauthenticated
 ```
 
-> **Note:** The `--allow-insecure-repositories` and `--allow-unauthenticated` flags are necessary because GitHub's raw content delivery is not designed for APT repositories. These flags bypass the security checks that are failing.
+> **Note:** The `--allow-insecure-repositories` and `--allow-unauthenticated` flags are required because GitHub's raw content delivery is not designed for APT repositories. If you encounter any issues with this method, please use Method 2 instead.
 
 ---
 
-### Method 2: Install via Direct Download (Recommended for most users) ⭐
+### Method 2: Install via Direct Download (⭐ RECOMMENDED) 
 
-Use this method for a simpler installation process without repository configuration.
+This is the **recommended method** for a simpler and more reliable installation process.
 
 #### 1️⃣ Step 1: Download the `.deb` Package
 
@@ -104,11 +101,11 @@ The **ServerHub Agent** is now installed on your system! You're ready to start u
 
 If you encounter any issues during the installation:
 
-- 🔍 **"W: GPG error"**: Use the `--allow-unauthenticated` flag with `apt install` to bypass GPG verification.
-  
-- 🔍 **"The repository does not have a Release file"**: Use the `--allow-insecure-repositories` flag with `apt update`.
+- 🔍 **"Clearsigned file isn't valid, got 'NOSPLIT'"**: This is a known issue with hosting on GitHub. Use Method 2 (direct .deb download) instead, or add `trusted=yes` to your sources.list entry and use the `--allow-insecure-repositories` and `--allow-unauthenticated` flags.
 
-- 🔄 **"Unable to locate package serverhub-agent"**: Try Method 2 (direct .deb download) instead.
+- 🔍 **"The repository is no longer signed"**: This error occurs because GitHub's raw content hosting isn't optimized for APT repositories. Use Method 2 for a more reliable installation.
+
+- 🔄 **"Unable to locate package serverhub-agent"**: Ensure you've correctly configured the repository or use Method 2 (direct .deb download).
 
 - 🔎 **Other repository errors**: Method 2 is the most reliable approach and avoids repository configuration issues completely.
 
