@@ -1,0 +1,9 @@
+# Helper scripts
+fix_repo.sh
+test_install.sh
+
+# Temporary files
+*.swp
+*.swo
+*~
+.DS_Store 

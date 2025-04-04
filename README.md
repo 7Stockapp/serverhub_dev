@@ -22,7 +22,7 @@ You can install the **ServerHub Agent** using either of the two methods below:
 
 ### Method 1: Install via Repository
 
-This is the recommended method as it ensures the package stays up-to-date.
+This method adds the ServerHub repository to your system.
 
 #### 1️⃣ Step 1: Download and Add the GPG Key
 
@@ -53,14 +53,20 @@ echo "deb [signed-by=/usr/share/keyrings/serverhub-archive-keyring.gpg arch=amd6
 Update your package list and install the **ServerHub Agent**:
 
 ```bash
-sudo apt update && sudo apt install serverhub-agent
+# First try without special flags
+sudo apt update && sudo apt install -y serverhub-agent
+
+# If you get security warnings, use these flags
+sudo apt update --allow-insecure-repositories && sudo apt install -y serverhub-agent --allow-unauthenticated
 ```
+
+> **Note:** The `--allow-insecure-repositories` and `--allow-unauthenticated` flags are necessary because GitHub's raw content delivery is not designed for APT repositories. These flags bypass the security checks that are failing.
 
 ---
 
-### Method 2: Install via `.deb` Package
+### Method 2: Install via Direct Download (Recommended for most users) ⭐
 
-Use this method if you prefer to manually download and install the package.
+Use this method for a simpler installation process without repository configuration.
 
 #### 1️⃣ Step 1: Download the `.deb` Package
 
@@ -98,9 +104,17 @@ The **ServerHub Agent** is now installed on your system! You're ready to start u
 
 If you encounter any issues during the installation:
 
-- 🔍 Ensure your internet connection is stable.
-- 🔑 Verify you have the required `sudo` permissions.
-- 🛠️ Open an issue in the [GitHub Issues](https://github.com/7Stockapp/serverhub_dev/issues) section for further assistance.
+- 🔍 **"W: GPG error"**: Use the `--allow-unauthenticated` flag with `apt install` to bypass GPG verification.
+  
+- 🔍 **"The repository does not have a Release file"**: Use the `--allow-insecure-repositories` flag with `apt update`.
+
+- 🔄 **"Unable to locate package serverhub-agent"**: Try Method 2 (direct .deb download) instead.
+
+- 🔎 **Other repository errors**: Method 2 is the most reliable approach and avoids repository configuration issues completely.
+
+- 🔑 **Check `sudo` permissions** if you encounter permission errors.
+
+- 🛠️ **Open an issue** in the [GitHub Issues](https://github.com/7Stockapp/serverhub_dev/issues) section for further assistance.
 
 ---
 
