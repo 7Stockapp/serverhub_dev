@@ -1,27 +1,36 @@
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA512
 
-Origin: ServerHub Repository
-Label: ServerHub
-Suite: stable
-Codename: stable
-Architectures: amd64
-Components: main
-Description: ServerHub Package Repository
-Date: Sat, 05 Apr 2025 02:11:51 +0300
+Date: Fri, 04 Apr 2025 23:21:11 +0000
+MD5Sum:
+ a62ec5bcc536fc0de84ec0d24fca86d3              195 Release
+ 762cbc6f3da85cb65b216d14601945d0              427 main/binary-amd64/Packages
+ 08814f62df72aff2db44d69a30193447              339 main/binary-amd64/Packages.gz
+SHA1:
+ 8285303493f43f2c318317fb2cbf30c7dbb39ffa              195 Release
+ 2091eaa364897184831497203a2a59e40e60b667              427 main/binary-amd64/Packages
+ 392893a9a7bfbb5f01fa2df5228c43b06f6e6938              339 main/binary-amd64/Packages.gz
+SHA256:
+ 5f6a217dc245abf8dc8a58ad62f7ee26690881174b8fe9c2a06bc3a4e4143096              195 Release
+ 401a85a9649bf3b2ed918c6f7d59171922b7970e63edfbed69eb10f82c793ab1              427 main/binary-amd64/Packages
+ cedff698a4f2fa0f54baff1a081c6009314e99ed9f202dbfae6bdb50593d7fd3              339 main/binary-amd64/Packages.gz
+SHA512:
+ b51d943599b280a2224394fc5784cbc60662fa24d42a3604f81e03a1f1a2551891e256aca5cccf8f6e02a02269a97a6d66c29df3e292efa3930b6a87159fb146              195 Release
+ b07a439f8ffa454c20bfa38bbcf0262237d8467c28d46da9c199c82930b0b0d0391c11712aa5b50b4a6f9b33d5cd5e76063342dc0ba61c6a540e2234dc4a0775              427 main/binary-amd64/Packages
+ 8d31bbd4fce649c07e82b06bdc743ca545c6b030f52e832ac418f149973b70f4e688ddec8f33033864edafb1470c6885d88aadacef174b21c29a62f4826d8d7e              339 main/binary-amd64/Packages.gz
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCgAdFiEErdGpN4eE4voKNaIFPCdfZjOc4mQFAmfwZ1MACgkQPCdfZjOc
-4mSlsA//WNwTuJCub33JqFojN8YjIFX/F+QuxOEAESUXE0whlyR3YEAVkTArf9VY
-N30EqAzWhYALnDjfg5/rI7QpfneHcq+E3QRQPKauwKN8u59v4JmsZvAFcpo9EvV0
-WPsVxxfdg6FA+s5k+Uv3chvDzQzv/oSsacyfOBygSDZF4Uvhr95uWDSkT/fmgak/
-v3h1EgXZfN9LokK3+Ik/K5p7lcUpyRh69QY+SkydRMzWsKoNKsI/QBNeMOsJXLRt
-NCgOEc3/3Qco5jWEBK4LLlIyJHIIlMth3LsOXZsDd4NKJzOlPNBGtEqd3DAZU0xx
-O6YRYWGmnhhxx0bm/yO+iwZ2G//VrIHppF6vkRPr3OXHVIBxDKnx5XOqOVHy/gjk
-FdPcbQyOWtNgtMmh36ksBfMxgYWQR+f9md8Qa8f+TR+s3S+ViPGfGl7pdVr4iMjF
-gMeznBPiXBYtJf9B7gzVDw3oQ2EWFFXaAKhkivtSmKRmT+LQK9Y2vJDEz4GkzLI1
-e02ewtoifFJlw4patR++1p0yhRxoYQSN7atko8K5f6C/r06RWyh3EwHWKkC/RWtu
-uNmCO/GIyg0lQ8/GIhy+AWRgjp0CnsPN7YbolYQna7ItuTah7Q8Bq1vCEy7zof7O
-QSSGnbj8TbU93l7G51BbHeCbSgHdrjQ6U3DDh2TNXOiYgp8QRhA=
-=jnsg
+iQIzBAEBCgAdFiEErdGpN4eE4voKNaIFPCdfZjOc4mQFAmfwaXEACgkQPCdfZjOc
+4mQMBw//aZm+YL/KCeCcG5LQhEnPhELlPOdiaWK2A3AJNEwSpSoDFrQ3GtQmv26E
+bK3kKNxIMfYYGbZNgtmbGSaRrAQt9kbRmJ3xFgPkJ1kz5YiA7jXVZoxo09YVIoHd
+NLkI8BLxJ0MOgWsXu7HDCDwjynrYZGEVhuWX8H+ZujHMyKTsgMObn+hjP3tWLiJU
+SEK+mmMGOcyhCizAzpJLnVcX12KufzQAv/r3WBvhq1fZEp8oxHzie2DLGOnnrFcM
+Olw2A4l1f8n6wnji/MsCrHmMwNtLh0G26gC8rl2c6OuuWQbAh1NEhm+gn7zFSwZK
+RRRrAM6aAZ045jmHSVuw/UrR0gPjhmNqoDm8H9EKIf1Bk2sxacATcfjZmd9E07K4
+sUToF/SFLToFck2GX+/BNRshFaMcV9BCvfl7yxUL6JA9cnaM/ybQQdyK1veNrATl
+M+pfEQQtHKLJBelL34Jqdoj5vkMmMIyHwIKMzlLHQfcLBADqJeFxNUp6n0NbaqRd
+2AK2ccsX6zJXqLE8T3hi7nLomeKCg8Gu63cEZiSXwoKQ8KKRSijoBdmO8MAqE7cV
+puAzumD+NyDD/AHLnlb3o8tTrJI1gIKykhUNnhm7ls1QjH9lZktlv/n+1zAPp7od
+N1KSX03chf3eC0znYjJdcEuuJTzLNvXLnbjJzSpVhRxG1gisZAk=
+=e3GB
 -----END PGP SIGNATURE-----
