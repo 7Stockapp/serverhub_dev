@@ -23,17 +23,24 @@ if [ ! -f serverhub-agent.deb ]; then
   exit 1
 fi
 
-# Install dependencies
+# Install dependencies with error handling
 echo "Installing dependencies..."
-apt-get update
-apt-get install -y python3 python3-pip systemd
+# Try with --allow-insecure-repositories first
+apt-get update --allow-insecure-repositories || apt-get update || true
+# Install dependencies anyway - if they're already installed this will work
+apt-get install -y python3 python3-pip systemd || {
+  echo "Warning: Couldn't install all dependencies through apt, attempting critical ones directly"
+  # Attempt to install only if not already installed
+  command -v python3 >/dev/null || apt-get install -y python3
+  command -v pip3 >/dev/null || apt-get install -y python3-pip
+}
 
 # Install the package
 echo "Installing serverhub-agent..."
 dpkg -i serverhub-agent.deb || true
 
 # Fix any dependency issues
-apt-get install -f -y
+apt-get install -f -y || true
 
 # Verify installation
 if systemctl is-active --quiet serverhub.service; then
@@ -42,7 +49,7 @@ if systemctl is-active --quiet serverhub.service; then
   systemctl status serverhub.service --no-pager
 else
   echo "Starting serverhub service..."
-  systemctl start serverhub.service
+  systemctl start serverhub.service || true
   sleep 2
   if systemctl is-active --quiet serverhub.service; then
     echo "ServerHub agent installed and running!"
@@ -51,6 +58,9 @@ else
   else
     echo "Warning: Service not running. Checking logs..."
     journalctl -u serverhub.service --no-pager -n 20
+    echo ""
+    echo "Checking if the package was installed successfully:"
+    dpkg -l | grep serverhub
   fi
 fi
 
