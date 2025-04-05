@@ -2,21 +2,21 @@ Origin: ServerHub Repository
 Label: ServerHub
 Suite: stable
 Codename: stable
-Architectures: all
+Architectures: amd64 all
 Components: main
-Date: Sat, 05 Apr 2025 03:05:53 +0300
+Date: Sat, 05 Apr 2025 03:11:26 +0300
 MD5Sum:
  762cbc6f3da85cb65b216d14601945d0 427 main/binary-amd64/Packages
- e8fd4a67c25500fce0ba3f4573b16a82 339 main/binary-amd64/Packages.gz
+ ac1851ecbed91ef1c447b66c4880c404 339 main/binary-amd64/Packages.gz
  762cbc6f3da85cb65b216d14601945d0 427 main/binary-all/Packages
- 75e42384be8049723a6b456f593b3f87 339 main/binary-all/Packages.gz
+ ac1851ecbed91ef1c447b66c4880c404 339 main/binary-all/Packages.gz
 SHA1:
  2091eaa364897184831497203a2a59e40e60b667 427 main/binary-amd64/Packages
- 8d33822b87d2ff59b52e58b7fe1dc2a1937a70ee 339 main/binary-amd64/Packages.gz
+ 055c5174a8fbd7a9f60f89bf4a1b6712c1713ac1 339 main/binary-amd64/Packages.gz
  2091eaa364897184831497203a2a59e40e60b667 427 main/binary-all/Packages
- d863aa1a0554c66592a2771319f40d7e4bcee2fb 339 main/binary-all/Packages.gz
+ 055c5174a8fbd7a9f60f89bf4a1b6712c1713ac1 339 main/binary-all/Packages.gz
 SHA256:
  401a85a9649bf3b2ed918c6f7d59171922b7970e63edfbed69eb10f82c793ab1 427 main/binary-amd64/Packages
- a4060ab45227d733768f643bdd87a3ac5bc14f3393ef9f676a61cced0844d9bf 339 main/binary-amd64/Packages.gz
+ 0e50eebee99b84e4570d460cb4a9079ff9ca3b7ac74a17cfae412de7708b7490 339 main/binary-amd64/Packages.gz
  401a85a9649bf3b2ed918c6f7d59171922b7970e63edfbed69eb10f82c793ab1 427 main/binary-all/Packages
- 43f1feaeae6e904e4661c3b465bc277e345d3005001b1ebf615dd1d84fe7efd8 339 main/binary-all/Packages.gz
+ 0e50eebee99b84e4570d460cb4a9079ff9ca3b7ac74a17cfae412de7708b7490 339 main/binary-all/Packages.gz
