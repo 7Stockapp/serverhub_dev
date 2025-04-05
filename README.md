@@ -4,20 +4,33 @@ ServerHub is a server monitoring solution that allows you to track your server's
 
 ## Installation Methods
 
-There are two ways to install the ServerHub agent:
+There are multiple ways to install the ServerHub agent:
 
-### 1. Direct Installation (Recommended)
+### 1. Interactive Installation (Recommended)
 
-The easiest way to install the ServerHub agent is by using our direct installation script:
+Download the script first, then run it to be prompted for your User Key:
 
 ```bash
-# Run this command as root or with sudo
-curl -sSL https://raw.githubusercontent.com/7Stockapp/serverhub_dev/main/install.sh | sudo bash
+# Download the script
+curl -sSL https://raw.githubusercontent.com/7Stockapp/serverhub_dev/main/install.sh -o install.sh
+
+# Make it executable
+chmod +x install.sh
+
+# Run it (will prompt for your USER_KEY)
+sudo ./install.sh
 ```
 
-This will download and install the agent automatically with all its dependencies.
+### 2. Installation with Environment Variable
 
-### 2. APT Repository Installation
+Provide your User Key as an environment variable:
+
+```bash
+# Replace "your-key-here" with your actual User Key
+USER_KEY=your-key-here sudo -E bash -c "$(curl -sSL https://raw.githubusercontent.com/7Stockapp/serverhub_dev/main/install.sh)"
+```
+
+### 3. APT Repository Installation
 
 You can also install the agent using our APT repository:
 
@@ -28,6 +41,11 @@ echo "deb [trusted=yes] https://raw.githubusercontent.com/7Stockapp/serverhub_de
 # Update and install
 sudo apt update --allow-insecure-repositories
 sudo apt install -y serverhub-agent --allow-unauthenticated
+
+# After installation, set your User Key
+sudo mkdir -p /etc/serverhub
+echo "USER_KEY=your-key-here" | sudo tee /etc/serverhub/config
+sudo systemctl restart serverhub.service
 ```
 
 ## Configuration
@@ -36,7 +54,10 @@ The agent configuration file is located at:
 - Linux: `/etc/serverhub/config`
 - Windows: `C:\ProgramData\ServerHub\config.ini`
 
-You may need to update your user key in this file.
+The configuration file requires your User Key:
+```
+USER_KEY=your-key-here
+```
 
 ## Checking Service Status
 
@@ -65,6 +86,16 @@ If you encounter any issues:
    cat /etc/serverhub/config
    ```
 
+4. Common installation issues:
+   - **APT lock errors**: If you get lock errors, try removing the locks:
+     ```bash
+     sudo rm /var/lib/dpkg/lock-frontend
+     sudo rm /var/lib/apt/lists/lock
+     sudo rm /var/lib/dpkg/lock
+     sudo dpkg --configure -a
+     ```
+   - **Silent failure with curl pipe**: Use the download method instead of piping curl directly to bash
+
 ## Uninstalling
 
 To remove the ServerHub agent:
@@ -72,6 +103,7 @@ To remove the ServerHub agent:
 ```bash
 sudo systemctl stop serverhub.service
 sudo apt remove serverhub-agent
+sudo rm -rf /etc/serverhub
 ```
 
 ## Support
