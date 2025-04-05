@@ -10,14 +10,20 @@ if [ "$EUID" -ne 0 ]; then
   exit 1
 fi
 
-# Prompt for user key
-echo ""
-echo "Please enter your ServerHub User Key:"
-read -p "> " USER_KEY
-
+# Check if USER_KEY is already set as an environment variable
 if [ -z "$USER_KEY" ]; then
-  echo "Error: User Key is required. Please run the installer again with a valid key."
-  exit 1
+  # If not set, prompt for user key
+  echo ""
+  echo "Please enter your ServerHub User Key:"
+  read -p "> " USER_KEY
+
+  if [ -z "$USER_KEY" ]; then
+    echo "Error: User Key is required. Please run the installer again with a valid key."
+    echo "You can also set it as an environment variable: USER_KEY=your-key curl -sSL ... | sudo -E bash"
+    exit 1
+  fi
+else
+  echo "Using provided USER_KEY from environment variable"
 fi
 
 # Create temporary directory
