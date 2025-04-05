@@ -10,6 +10,16 @@ if [ "$EUID" -ne 0 ]; then
   exit 1
 fi
 
+# Prompt for user key
+echo ""
+echo "Please enter your ServerHub User Key:"
+read -p "> " USER_KEY
+
+if [ -z "$USER_KEY" ]; then
+  echo "Error: User Key is required. Please run the installer again with a valid key."
+  exit 1
+fi
+
 # Create temporary directory
 TEMP_DIR=$(mktemp -d)
 cd "$TEMP_DIR"
@@ -42,6 +52,17 @@ dpkg -i serverhub-agent.deb || true
 # Fix any dependency issues
 apt-get install -f -y || true
 
+# Create configuration directory and file
+echo "Creating configuration..."
+mkdir -p /etc/serverhub
+cat > /etc/serverhub/config << EOF
+USER_KEY=$USER_KEY
+EOF
+chmod 644 /etc/serverhub/config
+
+# Reload systemd to recognize the new service
+systemctl daemon-reload
+
 # Verify installation
 if systemctl is-active --quiet serverhub.service; then
   echo "ServerHub agent installed and running!"
@@ -61,6 +82,8 @@ else
     echo ""
     echo "Checking if the package was installed successfully:"
     dpkg -l | grep serverhub
+    echo ""
+    echo "Your configuration has been saved to /etc/serverhub/config"
   fi
 fi
 
@@ -71,4 +94,5 @@ rm -rf "$TEMP_DIR"
 
 echo ""
 echo "Installation completed!"
+echo "User key has been saved to /etc/serverhub/config"
 echo "To check service status at any time, run: systemctl status serverhub.service" 
