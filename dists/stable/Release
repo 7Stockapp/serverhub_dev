@@ -2,15 +2,15 @@ Origin: ServerHub Repository
 Label: ServerHub
 Suite: stable
 Codename: stable
-Architectures: amd64
+Architectures: all
 Components: main
-Date: Sat, 05 Apr 2025 03:01:40 +0300
+Date: Sat, 05 Apr 2025 03:04:02 +0300
 MD5Sum:
  762cbc6f3da85cb65b216d14601945d0 427 main/binary-amd64/Packages
- 8a9c6be9cd68c9fa418422df9565ae99 339 main/binary-amd64/Packages.gz
+ e8fd4a67c25500fce0ba3f4573b16a82 339 main/binary-amd64/Packages.gz
 SHA1:
  2091eaa364897184831497203a2a59e40e60b667 427 main/binary-amd64/Packages
- 18c17c6dcd939fa7bac6a37c604e72cf2eb7b765 339 main/binary-amd64/Packages.gz
+ 8d33822b87d2ff59b52e58b7fe1dc2a1937a70ee 339 main/binary-amd64/Packages.gz
 SHA256:
  401a85a9649bf3b2ed918c6f7d59171922b7970e63edfbed69eb10f82c793ab1 427 main/binary-amd64/Packages
- af719ea0878cce10498ebdfee0555d280e911d04206cde82db7424b78c1f3d26 339 main/binary-amd64/Packages.gz
+ a4060ab45227d733768f643bdd87a3ac5bc14f3393ef9f676a61cced0844d9bf 339 main/binary-amd64/Packages.gz
