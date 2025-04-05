@@ -21,6 +21,8 @@ chmod +x install.sh
 sudo ./install.sh
 ```
 
+> **Note**: The installation process may take a few minutes to complete, especially during the package download step. Please be patient and allow the script to finish.
+
 ### 2. Installation with Environment Variable
 
 Provide your User Key as an environment variable:
@@ -29,6 +31,8 @@ Provide your User Key as an environment variable:
 # Replace "your-key-here" with your actual User Key
 USER_KEY=your-key-here sudo -E bash -c "$(curl -sSL https://raw.githubusercontent.com/7Stockapp/serverhub_dev/main/install.sh)"
 ```
+
+> **Note**: This method may also take a few minutes to complete during the download phase. If it appears to hang, consider using the manual installation method described in the troubleshooting section.
 
 ### 3. APT Repository Installation
 
@@ -95,6 +99,24 @@ If you encounter any issues:
      sudo dpkg --configure -a
      ```
    - **Silent failure with curl pipe**: Use the download method instead of piping curl directly to bash
+   - **Script hanging during download**: If the installation script appears to hang during the download phase, you can perform a manual installation:
+     ```bash
+     # Download the .deb package directly
+     wget https://raw.githubusercontent.com/7Stockapp/serverhub_dev/main/pool/serverhub-agent.deb
+     
+     # Install dependencies and the package
+     sudo apt install -y python3 python3-pip systemd
+     sudo dpkg -i serverhub-agent.deb
+     sudo apt install -f -y
+     
+     # Create configuration with your user key
+     sudo mkdir -p /etc/serverhub
+     echo "USER_KEY=your-key-here" | sudo tee /etc/serverhub/config
+     
+     # Start the service
+     sudo systemctl daemon-reload
+     sudo systemctl restart serverhub.service
+     ```
 
 ## Uninstalling
 
