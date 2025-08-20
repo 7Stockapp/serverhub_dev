@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
 
-echo "ServerHub Agent Direct Installer"
-echo "================================"
+echo "ServerHub Agent Direct Installer (PEP 668 Compatible)"
+echo "===================================================="
 
 # Check if running as root
 if [ "$EUID" -ne 0 ]; then
@@ -30,30 +30,35 @@ fi
 TEMP_DIR=$(mktemp -d)
 cd "$TEMP_DIR"
 
-# Download the agent package
-echo "Downloading serverhub-agent..."
-wget -q https://raw.githubusercontent.com/7Stockapp/serverhub_dev/main/pool/serverhub-agent.deb -O serverhub-agent.deb
+# Download the agent package (PEP 668 compatible version)
+echo "Downloading serverhub-agent (PEP 668 compatible)..."
+wget -q https://raw.githubusercontent.com/7Stockapp/serverhub_dev/main/pool/serverhub-agent_1.0.3.deb -O serverhub-agent_1.0.3.deb
 
-if [ ! -f serverhub-agent.deb ]; then
-  echo "Error: Failed to download serverhub-agent.deb"
+if [ ! -f serverhub-agent_1.0.3.deb ]; then
+  echo "Error: Failed to download serverhub-agent_1.0.3.deb"
   exit 1
 fi
 
-# Install dependencies with error handling
-echo "Installing dependencies..."
+# Install dependencies with error handling (PEP 668 compatible)
+echo "Installing dependencies (PEP 668 compatible)..."
 # Try with --allow-insecure-repositories first
 apt-get update --allow-insecure-repositories || apt-get update || true
-# Install dependencies anyway - if they're already installed this will work
-apt-get install -y python3 python3-pip systemd || {
+
+# Install PEP 668 compatible dependencies
+echo "Installing Python dependencies via apt packages..."
+apt-get install -y python3 python3-psutil python3-websockets python3-requests python3-dateutil systemd || {
   echo "Warning: Couldn't install all dependencies through apt, attempting critical ones directly"
   # Attempt to install only if not already installed
   command -v python3 >/dev/null || apt-get install -y python3
-  command -v pip3 >/dev/null || apt-get install -y python3-pip
+  command -v python3-psutil >/dev/null || apt-get install -y python3-psutil
+  command -v python3-websockets >/dev/null || apt-get install -y python3-websockets
+  command -v python3-requests >/dev/null || apt-get install -y python3-requests
+  command -v python3-dateutil >/dev/null || apt-get install -y python3-dateutil
 }
 
 # Install the package
 echo "Installing serverhub-agent..."
-dpkg -i serverhub-agent.deb || true
+dpkg -i serverhub-agent_1.0.3.deb || true
 
 # Fix any dependency issues
 apt-get install -f -y || true
@@ -101,4 +106,6 @@ rm -rf "$TEMP_DIR"
 echo ""
 echo "Installation completed!"
 echo "User key has been saved to /etc/serverhub/config"
-echo "To check service status at any time, run: systemctl status serverhub.service" 
+echo "To check service status at any time, run: systemctl status serverhub.service"
+echo ""
+echo "Note: This version is compatible with Ubuntu 24.04+ PEP 668 restrictions" 
